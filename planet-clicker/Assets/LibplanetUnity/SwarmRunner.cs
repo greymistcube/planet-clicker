@@ -12,19 +12,19 @@ using UnityEngine;
 
 namespace LibplanetUnity
 {
-    public class SwarmRunner
+    public class SwarmRunner<T> where T : IAction, new()
     {
         private PrivateKey PrivateKey { get; set; }
 
         private CancellationTokenSource _cancellationTokenSource;
 
-        private Swarm<PolymorphicAction<ActionBase>> _swarm;
+        private Swarm<T> _swarm;
 
-        private BlockChain<PolymorphicAction<ActionBase>> _blockChain;
+        private BlockChain<T> _blockChain;
 
-        
+
         public SwarmRunner(
-            Swarm<PolymorphicAction<ActionBase>> swarm,
+            Swarm<T> swarm,
             PrivateKey privateKey)
         {
             _swarm = swarm;

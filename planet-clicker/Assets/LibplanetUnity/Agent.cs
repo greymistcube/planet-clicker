@@ -27,7 +27,7 @@ namespace LibplanetUnity
     {
         private BaseMiner<PolymorphicAction<ActionBase>> _miner;
 
-        private SwarmRunner _swarmRunner;
+        private SwarmRunner<PolymorphicAction<ActionBase>> _swarmRunner;
 
         private readonly ConcurrentQueue<System.Action> _actions = new ConcurrentQueue<System.Action>();
 
@@ -100,7 +100,7 @@ namespace LibplanetUnity
             _blockChain = _swarm.BlockChain;
 
 
-            _swarmRunner = new SwarmRunner(_swarm, PrivateKey);
+            _swarmRunner = new SwarmRunner<PolymorphicAction<ActionBase>>(_swarm, PrivateKey);
             if (miner is null)
             {
                 _miner = new SoloMiner<PolymorphicAction<ActionBase>>(
